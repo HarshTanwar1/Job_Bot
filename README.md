@@ -4,7 +4,7 @@
 
 An end-to-end RPA bot that scrapes, structures, filters & emails job-market data — fully hands-free
 
-_Driving Chrome across five major job portals to turn hours of manual research into a one-click, automated report._
+Driving Chrome across five major job portals to turn hours of manual research into a one-click, automated report
 
 <br>
 
@@ -18,7 +18,7 @@ _Driving Chrome across five major job portals to turn hours of manual research i
 
 <br>
 
-## 🎯 The Problem It Solves
+## 🎯 Overview
 
 Searching job portals by hand is slow, repetitive, and error-prone — open a site, run a search,
 click each listing, copy the salary, benefits, and requirements, paste them into a spreadsheet,
@@ -31,38 +31,16 @@ copy-pasting, no missed listings.
 
 <br>
 
-## 🌟 Highlights
+## 🌟 Key Highlights
 
-|                                 |                                                                                                                                        |
+| Functionality                   | Methodology                                                                                                                            |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| 🔎 **5 job portals automated**  | LinkedIn · Indeed · Glassdoor · Monster · SimplyHired                                                                                  |
 | 🧩 **Structured extraction**    | Parses raw postings into 7 clean fields (compensation, benefits, experience, responsibilities, qualifications, schedule, requirements) |
 | 🎛️ **Interactive filtering**    | Filter results by any column + keyword at runtime — no code edits                                                                      |
 | 📊 **Excel reporting**          | Auto-writes results and filtered copies to spreadsheets                                                                                |
 | 📧 **Automated email delivery** | Sends the final report over SMTP to any recipient                                                                                      |
 | ♻️ **Modular & reusable**       | Shared sub-workflows for extraction & filtering, reused across every scraper                                                           |
 | 🛡️ **Resilient**                | Try/Catch + app-state checks survive slow loads, pop-ups & layout quirks                                                               |
-
-<br>
-
-## ✨ Features & Functionalities
-
-- **Multi-portal job scraping** — Dedicated workflows scrape listings from LinkedIn, Indeed,
-  Glassdoor, Monster, and SimplyHired.
-- **Structured data extraction** — A reusable `Data_Extraction` workflow parses each raw job-detail
-  blob into clean fields: _compensation, benefits, experience, responsibilities, qualifications,
-  schedule,_ and _requirements_.
-- **Personal & organization data collection** — `Personal.xaml` and `Organization.xaml` gather
-  employee-level and company-level records (name, address, job title, industry, company name,
-  employment status, and more).
-- **Excel export** — Collected data is written to workbooks (`Employee_Data.xlsx`,
-  `Employment.xlsx`) via Write Range.
-- **Interactive keyword filtering** — `Data_Filtering` prompts the user to choose a filter column
-  and enter a keyword, then removes non-matching rows and saves a filtered copy
-  (`Filtered_Employee_Data.xlsx`, `Filtered_Employment.xlsx`).
-- **Automated email delivery** — Results are emailed to a user-supplied address via SMTP.
-- **Resilient navigation** — Try/Catch blocks and `Check App State` / _Target appears_ checks
-  handle pages that load slowly or differ between listings.
 
 <br>
 
@@ -81,27 +59,24 @@ copy-pasting, no missed listings.
 
 <br>
 
-## 🏗️ How It's Built
+## ✨ Features & Functionalities
 
-```
-Main.xaml                      # Entry point (workflow shell)
-│
-├── Personal.xaml              # Orchestrates job scraping + employee data + filtering + email
-│   ├── Extract_Data_Linkedin.xaml      ┐
-│   ├── Extract_Data_Indeed.xaml        │
-│   ├── Extract_Data_Glassdoor.xaml     ├─ Site scrapers → each invokes Data_Extraction
-│   ├── Extract_Data_Monster.xaml       │
-│   └── Extract_Data_SimplyHired.xaml   ┘
-│
-├── Organization.xaml          # Collects organization/company data + filtering + email
-│
-├── Data_Extraction.xaml       # ♻️ Reusable: parses raw job text → structured fields
-└── Data_Filtering.xaml        # ♻️ Reusable: keyword-based row filtering + Excel write
-```
-
-> **Design principle:** common logic lives in shared, argument-driven sub-workflows
-> (`Data_Extraction`, `Data_Filtering`) instead of being copy-pasted into every scraper — keeping
-> the project DRY and easy to extend with new job sites
+- **Multi-portal job scraping** — Dedicated workflows scrape listings from LinkedIn, Indeed,
+  Glassdoor, Monster, and SimplyHired.
+- **Structured data extraction** — A reusable [`Data_Extraction.xaml`](Data_Extraction.xaml) workflow parses each raw job-detail
+  blob into clean fields: _compensation, benefits, experience, responsibilities, qualifications,
+  schedule,_ and _requirements_.
+- **Personal & organization data collection** — [`Personal.xaml`](Personal.xaml) and [`Organization.xaml`](Organization.xaml) gather
+  employee-level and company-level records (name, address, job title, industry, company name,
+  employment status, and more).
+- **Excel export** — Collected data is written to workbooks ([`Employee_Data.xlsx`](Employee_Data.xlsx),
+  `Employment.xlsx`) via Write Range.
+- **Interactive keyword filtering** — `Data_Filtering` prompts the user to choose a filter column
+  and enter a keyword, then removes non-matching rows and saves a filtered copy
+  ([`Filtered_Employee_Data.xlsx`](Filtered_Employee_Data.xlsx), [`Filtered_Employment.xlsx`](Filtered_Employment.xlsx)).
+- **Automated email delivery** — Results are emailed to a user-supplied address via SMTP.
+- **Resilient navigation** — Try/Catch blocks and _Check App State_ / _Target appears_ checks
+  handle pages that load slowly or differ between listings.
 
 <br>
 
@@ -130,12 +105,12 @@ Main.xaml                      # Entry point (workflow shell)
 
 3. **Verify the Chrome extension** is installed and enabled (the bot uses _Use Browser Chrome_).
 
-4. **Configure email** — Open `Personal.xaml` / `Organization.xaml` and set your SMTP server, port,
+4. **Configure email** — Open [`Personal.xaml`](Personal.xaml) / [`Organization.xaml`](Organization.xaml) and set your SMTP server, port,
    and credentials in the **Send SMTP Mail Message** activity.
 
 5. **Run a workflow**
-   - **Employee + job data:** open and **Run** `Personal.xaml`
-   - **Organization data:** open and **Run** `Organization.xaml`
+   - **Employee + job data:** open and **Run** [`Personal.xaml`](Personal.xaml)
+   - **Organization data:** open and **Run** [`Organization.xaml`](Organization.xaml)
    - Follow the on-screen dialogs to enter your email, choose whether to filter, pick a column, and
      enter a keyword.
 
@@ -153,7 +128,7 @@ Main.xaml                      # Entry point (workflow shell)
   argument-driven `.xaml` files instead of duplicating it across every scraper.
 - Designing robust **web selectors** and handling the reality that every job portal — and even
   individual listings on the same site — renders its pages differently.
-- Using **`Check App State` / _Target appears_** and **Try/Catch** to make automation resilient to
+- Using **_Check App State_ / _Target appears_** and **Try/Catch** to make automation resilient to
   slow loads, missing elements, and pop-ups instead of crashing on the first surprise.
 - Passing data between workflows with **In / InOut arguments** and moving structured data around
   using **DataTables**.
