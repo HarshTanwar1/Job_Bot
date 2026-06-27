@@ -33,20 +33,18 @@ copy-pasting, no missed listings.
 
 ## 🌟 Key Highlights
 
-| Functionality                   | Methodology                                                                                                                            |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| 🧩 **Structured extraction**    | Parses raw postings into 7 clean fields (compensation, benefits, experience, responsibilities, qualifications, schedule, requirements) |
-| 🎛️ **Interactive filtering**    | Filter results by any column + keyword at runtime — no code edits                                                                      |
-| 📊 **Excel reporting**          | Auto-writes results and filtered copies to spreadsheets                                                                                |
-| 📧 **Automated email delivery** | Sends the final report over SMTP to any recipient                                                                                      |
-| ♻️ **Modular & reusable**       | Shared sub-workflows for extraction & filtering, reused across every scraper                                                           |
-| 🛡️ **Resilient**                | Try/Catch + app-state checks survive slow loads, pop-ups & layout quirks                                                               |
+- 🧩 **Structured extraction** — Parses raw postings into 7 clean fields (compensation, benefits, experience, responsibilities, qualifications, schedule, requirements).
+- 🎛️ **Interactive filtering** — Filter results by any column + keyword at runtime, no code edits.
+- 📊 **Excel reporting** — Auto-writes results and filtered copies to spreadsheets.
+- 📧 **Automated email delivery** — Sends the final report over SMTP to any recipient.
+- ♻️ **Modular & reusable** — Shared sub-workflows for extraction & filtering, reused across every scraper.
+- 🛡️ **Resilient** — Try/Catch + app-state checks survive slow loads, pop-ups & layout quirks.
 
 <br>
 
 ## 🛠️ Tech Stack
 
-| Area                    | Technology                                                                                           |
+| Layer                   | Technologies                                                                                         |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- |
 | **Automation platform** | UiPath Studio 21.10 (Workflow / `.xaml`)                                                             |
 | **Runtime**             | .NET Framework (Legacy profile)                                                                      |
@@ -59,7 +57,7 @@ copy-pasting, no missed listings.
 
 <br>
 
-## ✨ Features & Functionalities
+## ✨ Features & Functionality
 
 - **Multi-portal job scraping** — Dedicated workflows scrape listings from LinkedIn, Indeed,
   Glassdoor, Monster, and SimplyHired.
