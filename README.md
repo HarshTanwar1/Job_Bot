@@ -112,7 +112,7 @@ copy-pasting, no missed listings.
    - Follow the on-screen dialogs to enter your email, choose whether to filter, pick a column, and
      enter a keyword.
 
-6. **Check the output** — Results land in the `.xlsx` files (`Employee_Data.xlsx`,
+6. **Check the output** — Results land in the `.xlsx` files ([`Employee_Data.xlsx`](Employee_Data.xlsx),
    `Employment.xlsx`, and the `Filtered_*.xlsx` copies) **and** in your inbox.
 
 > ⚠️ **Note:** Scrapers depend on each site's current page layout. If a site changed its markup
